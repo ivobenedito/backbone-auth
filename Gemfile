@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 
 gem 'mongoid'
+gem 'bson_ext'
 gem 'devise'
 gem 'cancan'
 gem 'backbone-on-rails'
