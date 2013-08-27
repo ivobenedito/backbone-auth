@@ -1,9 +1,15 @@
 class BackboneAuth.Models.Session extends Backbone.Model
   urlRoot: '/api/session'
 
+  initialize: ->
+    @on 'change:user', @onUserChange
+
   load: (callback) ->
     @fetch
       success: callback
+
+  authenticated: ->
+    @has('user')
 
   login: (credentials) ->
     $.ajax
@@ -21,5 +27,8 @@ class BackboneAuth.Models.Session extends Backbone.Model
       success: (data) =>
         @unset('user')
 
-  authenticated: ->
-    @has('user')
+  onUserChange: ->
+    if @authenticated()
+      console.debug 'Authenticated!'
+    else
+      console.debug 'Not authenticated!'
