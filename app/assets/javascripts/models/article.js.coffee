@@ -1,0 +1,1 @@
+class BackboneAuth.Models.Article extends Backbone.Model
