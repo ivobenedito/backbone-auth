@@ -6,5 +6,6 @@ class Article
   field :body,  type: String
 
   embeds_many :comments
+  belongs_to :user
 end
   

@@ -34,4 +34,11 @@ class User
   validates_presence_of :name
 
   attr_accessible :name, :email, :password, :password_confirmation, :approved, :role, :created_at, :updated_at
+
+  has_many :articles
+
+  def role?(option)
+    role == option.to_s
+  end
+
 end
