@@ -2,11 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
+gem 'jquery-rails'
 gem 'mongoid'
 gem 'bson_ext'
 gem 'devise'
 gem 'cancan'
 gem 'backbone-on-rails'
+gem 'cancan'
+gem 'simple_form'
 
 gem 'pry-rails'
 gem 'pry-nav'
@@ -17,5 +20,3 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'handlebars_assets'
 end
-
-gem 'jquery-rails'
