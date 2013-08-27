@@ -3,6 +3,7 @@
 #= require underscore
 #= require backbone
 #= require handlebars.runtime
+#= require backbone.layoutmanager
 
 #= require backbone_auth
 #= require_tree ../templates

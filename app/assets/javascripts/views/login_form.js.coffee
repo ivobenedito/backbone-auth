@@ -1,9 +1,13 @@
 class BackboneAuth.Views.LoginForm extends Backbone.View
-  classname: 'loginForm js-loginForm'
+  className: 'js-loginForm loginForm'
   template: JST['login_form']
 
   events:
     'submit form': 'onSubmit'
+
+  initialize: ->
+    @listenTo EventBus, 'session:signIn', @onSessionSignIn, @
+    @listenTo EventBus, 'session:signOut', @onSessionSignOut, @
 
   render: ->
     @renderTemplate()
@@ -11,6 +15,7 @@ class BackboneAuth.Views.LoginForm extends Backbone.View
 
   renderTemplate: ->
     @$el.html @template()
+    @$el.hide() if BackboneAuth.session.authenticated()
 
   serialize: =>
     @attributes = {}
@@ -22,4 +27,9 @@ class BackboneAuth.Views.LoginForm extends Backbone.View
   onSubmit: (ev) ->
     ev.preventDefault()
     BackboneAuth.session.login(@serialize())
-    false
+
+  onSessionSignIn: (session) ->
+    @$el.hide()
+
+  onSessionSignOut: (session) ->
+    @$el.show()

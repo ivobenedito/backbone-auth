@@ -29,6 +29,8 @@ class BackboneAuth.Models.Session extends Backbone.Model
 
   onUserChange: ->
     if @authenticated()
-      console.debug 'Authenticated!'
+      console.debug 'session:signIn'
+      EventBus.trigger 'session:signIn', @
     else
-      console.debug 'Not authenticated!'
+      console.debug 'session:signOut'
+      EventBus.trigger 'session:signOut', @
