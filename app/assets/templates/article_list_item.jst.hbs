@@ -1,2 +1,28 @@
-<td>{{title}}</td>
-<td>{{content}}</td>
+<td>
+  <span class="field-wrapper">{{title}}</span>
+  <input type="text" name="title" value="{{title}}" />
+</td>
+<td>
+  <span class="field-wrapper">{{content}}</span>
+  <input type="text" name="content" value="{{content}}" />
+</td>
+<td>
+  {{user.email}}
+</td>
+<td>
+  {{permission.update}}
+</td>
+<td>
+  {{permission.destroy}}
+</td>
+<td>
+  {{! {{#if permission.update}}
+    <a href="#" class="js-btn js-btn-article-edit">edit</a>
+  {{! {{/if}}
+
+  <a href="#" class="js-btn js-btn-article-save">save</a>
+
+  {{! {{#if permission.destroy}}
+    <a href="#" class="js-btn js-btn-article-delete">delete</a>
+  {{! {{/if}}
+</td>
