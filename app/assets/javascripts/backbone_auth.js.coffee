@@ -1,3 +1,5 @@
+window.EventBus = _.clone(Backbone.Events)
+
 window.BackboneAuth =
   Models: {}
   Collections: {}
