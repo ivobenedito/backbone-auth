@@ -1,2 +1,2 @@
-collection @articles
+object @event
 extends 'api/articles/show'
