@@ -14,6 +14,8 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (3.2.11)
       activesupport (= 3.2.11)
       builder (~> 3.0.0)
@@ -85,6 +87,7 @@ GEM
       tzinfo (~> 0.3.22)
     moped (1.5.1)
     multi_json (1.7.9)
+    oj (2.1.4)
     origin (1.1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
@@ -96,6 +99,8 @@ GEM
       pry (~> 0.9.10)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    rabl (0.8.6)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -151,6 +156,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   backbone-on-rails
   bson_ext
   cancan
@@ -159,8 +165,10 @@ DEPENDENCIES
   handlebars_assets
   jquery-rails
   mongoid
+  oj
   pry-nav
   pry-rails
+  rabl
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   simple_form
