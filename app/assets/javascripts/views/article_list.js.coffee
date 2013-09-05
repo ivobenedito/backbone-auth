@@ -5,6 +5,7 @@ class BackboneAuth.Views.ArticleList extends Backbone.View
   render: ->
     @renderTemplate()
     @renderItems()
+    @afterRender()
     @
 
   renderTemplate: ->
@@ -16,3 +17,6 @@ class BackboneAuth.Views.ArticleList extends Backbone.View
   renderItem: (article) ->
     itemView = new BackboneAuth.Views.ArticleListItem(model: article)
     @$('table').append(itemView.render().el)
+
+  afterRender: ->
+    @listenTo @collection, 'add', @renderItem, @

@@ -1,0 +1,15 @@
+<h5>ID: {{id}}</h5>
+
+<ul>
+  {{#each tracked_edits}}
+    <li>
+      {{@key}}
+      {{#each this}}
+        <ul>
+          <li>{{@key}}</li>
+          <li>{{this}}</li>
+        </ul>
+      {{/each}}
+    </li>
+  {{/each}}
+</ul>

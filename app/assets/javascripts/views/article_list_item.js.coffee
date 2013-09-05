@@ -4,9 +4,10 @@ class BackboneAuth.Views.ArticleListItem extends Backbone.View
   template: JST['article_list_item']
 
   events:
-    'click .js-btn-article-edit' : 'onBtnEditClick'
-    'click .js-btn-article-save' : 'onBtnSaveClick'
-    'click .js-btn-article-delete' : 'onBtnDeleteClick'
+    'click .js-btn-article-history': 'onBtnHistoryClick'
+    'click .js-btn-article-edit': 'onBtnEditClick'
+    'click .js-btn-article-save': 'onBtnSaveClick'
+    'click .js-btn-article-delete': 'onBtnDeleteClick'
 
   render: ->
     @renderTemplate()
@@ -16,6 +17,15 @@ class BackboneAuth.Views.ArticleListItem extends Backbone.View
     @$el.html @template(@model.toJSON())
     @$('input[type="text"]').hide()
     @$('.js-btn-article-save').hide()
+
+  #
+  # callbacks
+  #
+
+  onBtnHistoryClick: (ev) ->
+    ev.preventDefault()
+    @articleHistoryView = new BackboneAuth.Views.ArticleHistory()
+    $('body').append(@articleHistoryView.render().el)
 
   onBtnEditClick: (ev) ->
     ev.preventDefault()
