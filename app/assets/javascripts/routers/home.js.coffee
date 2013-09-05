@@ -15,6 +15,9 @@ class BackboneAuth.Routers.HomeRouter extends Backbone.Router
       @navBarView = new BackboneAuth.Views.NavBar()
       $('body').append(@navBarView.render().el)
 
+      @articleCreateFormView = new BackboneAuth.Views.ArticleCreateForm(collection: @articles)
+      $('body').append(@articleCreateFormView.render().el)      
+
       @articles.fetch
         success: =>
           @articleListView = new BackboneAuth.Views.ArticleList(collection: @articles)

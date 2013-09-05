@@ -27,7 +27,7 @@ class BackboneAuth.Views.ArticleListItem extends Backbone.View
     ev.preventDefault()
     
     @model.set('title', @$('input[name="title"]').val())
-    @model.set('content', @$('input[name="content"]').val())
+    @model.set('body', @$('input[name="body"]').val())
 
     @model.save
       success: ->

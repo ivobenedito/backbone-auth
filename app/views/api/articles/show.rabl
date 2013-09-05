@@ -1,5 +1,5 @@
 object @article
-attributes :id, :title, :content, :user
+attributes :id, :title, :body, :user
 
 node :permission do |article|
   { 
