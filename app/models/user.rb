@@ -3,13 +3,15 @@ class User
   include Mongoid::Timestamps
 
   devise :database_authenticatable, :registerable,
-         :trackable, :validatable, :token_authenticatable
+         :trackable, :validatable, :token_authenticatable, authentication_keys: [:login]
 
   ## Database authenticatable
+  field :username,           type: String, default: ""
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
-  validates :email,              presence: true
+  validates :username, uniqueness: { case_sensitive: false }
+  validates :email, presence: true
   validates :encrypted_password, presence: true
 
   ## Token authenticatable
@@ -33,12 +35,23 @@ class User
   field :name, type: String
   validates_presence_of :name
 
-  attr_accessible :name, :email, :password, :password_confirmation, :approved, :role, :created_at, :updated_at
+  attr_accessor :login
+  attr_accessible :login, :username, :email, :password, :password_confirmation, 
+                  :name, :role, :approved, :created_at, :updated_at
 
   has_many :articles
 
   def role?(option)
     role == option.to_s
   end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login).downcase
+      where(conditions).where('$or' => [ {:username => /^#{Regexp.escape(login)}$/i}, {:email => /^#{Regexp.escape(login)}$/i} ]).first
+    else
+      where(conditions).first
+    end
+  end  
 
 end
