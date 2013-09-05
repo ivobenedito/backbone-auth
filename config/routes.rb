@@ -7,5 +7,6 @@ BackboneAuth::Application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:show, :create, :destroy]
     resources :articles
+    resources :history_trackers
   end
 end
