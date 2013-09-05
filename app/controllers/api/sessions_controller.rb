@@ -10,7 +10,7 @@ module Api
     end
 
     def create
-      @user = User.find_for_database_authentication(email: params[:email])
+      @user = User.find_for_database_authentication(login: params[:login])
       return invalid_login_attempt unless @user.present?
 
       if @user.valid_password?(params[:password])
